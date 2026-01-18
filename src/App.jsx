@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { collection, getDocs, onSnapshot, doc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { collection, getDocs, onSnapshot, doc, setDoc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { db, COLLECTIONS } from './firebase';
 import Hero from './components/Hero';
 import ProductIndex from './components/ProductIndex';
@@ -48,6 +48,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [sortOrder, setSortOrder] = useState('date'); // 'date' or 'random'
   const [theme, setTheme] = useState('dark'); // 'dark' or 'light'
+  const settingsLoadedRef = useRef(false);
 
   // Apply theme to document
   useEffect(() => {
@@ -91,6 +92,51 @@ function App() {
 
     initializeData();
   }, []);
+
+  // Load sortOrder from Firebase on mount
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const settingsDoc = await getDoc(doc(db, COLLECTIONS.SETTINGS, 'app'));
+        if (settingsDoc.exists()) {
+          const settings = settingsDoc.data();
+          console.log('📥 Loaded settings from Firebase:', settings);
+          if (settings.sortOrder) {
+            setSortOrder(settings.sortOrder);
+          }
+        } else {
+          console.log('📄 No settings document found, using defaults');
+        }
+        settingsLoadedRef.current = true;
+      } catch (error) {
+        console.error('Error loading settings:', error);
+        settingsLoadedRef.current = true;
+      }
+    };
+
+    loadSettings();
+  }, []);
+
+  // Save sortOrder to Firebase when it changes
+  useEffect(() => {
+    const saveSettings = async () => {
+      try {
+        console.log('💾 Saving sortOrder to Firebase:', sortOrder);
+        await setDoc(doc(db, COLLECTIONS.SETTINGS, 'app'), {
+          sortOrder: sortOrder,
+          updatedAt: new Date().toISOString()
+        });
+        console.log('✅ Settings saved successfully');
+      } catch (error) {
+        console.error('❌ Error saving settings:', error);
+      }
+    };
+
+    // Only save after settings have been loaded from Firebase
+    if (settingsLoadedRef.current && sortOrder) {
+      saveSettings();
+    }
+  }, [sortOrder]);
 
   // Real-time listener for products collection
   useEffect(() => {

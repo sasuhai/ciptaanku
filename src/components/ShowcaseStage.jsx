@@ -6,6 +6,8 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
     const mobileContainerRef = useRef(null);
     const [laptopScale, setLaptopScale] = useState(1);
     const [mobileScale, setMobileScale] = useState(1);
+    const [theme, setTheme] = useState('dark');
+    const [randomKey, setRandomKey] = useState(0);
 
     const [maskedImage, setMaskedImage] = useState(null);
 
@@ -45,6 +47,32 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
         processImage();
     }, []);
 
+    // Detect theme changes
+    useEffect(() => {
+        const detectTheme = () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            setTheme(currentTheme);
+        };
+
+        detectTheme();
+
+        // Watch for theme attribute changes
+        const observer = new MutationObserver(detectTheme);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    // Update random key on mount to force new shuffle on page refresh
+    useEffect(() => {
+        setRandomKey(Math.random());
+    }, [sortOrder]);
+
+
+
     useEffect(() => {
         const updateScales = () => {
             if (laptopContainerRef.current) {
@@ -74,24 +102,37 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                 return dateB - dateA; // Newest first
             });
         } else {
-            // Random shuffle
-            return [...products].sort(() => Math.random() - 0.5);
+            // Fisher-Yates shuffle for proper randomization
+            const shuffled = [...products];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
         }
-    }, [products, sortOrder]);
+    }, [products, sortOrder, randomKey]);
+
+    // Theme-aware colors
+    const bgColor = theme === 'light' ? '#f5f5f7' : '#0a0a0a';
+    const cardBgColor = theme === 'light' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.6)';
+    const cardBorderColor = theme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)';
+    const masonryBg = theme === 'light' ? '#ffffff' : '#fcfbf9';
+    const masonryTextColor = theme === 'light' ? '#1a1918' : '#1a1918';
+    const masonryItemBg = theme === 'light' ? '#f5f5f5' : '#1a1a1a';
 
     return (
         <section style={{
-            minHeight: '150vh', // Increased to show cards that extend below
+            minHeight: '150vh',
             width: '100%',
-            background: '#0a0a0a',
+            background: bgColor,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
             padding: 'var(--space-xl) 0',
-            paddingBottom: 'calc(var(--space-xl) + 200px)', // Extra padding for cards
+            paddingBottom: 'calc(var(--space-xl) + 200px)',
             position: 'relative',
-            overflow: 'hidden' // Restore to enable iframe scrolling
+            overflow: 'hidden'
         }}>
             <div style={{
                 textAlign: 'left',
@@ -254,15 +295,15 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                                 cursor: 'pointer',
                                 opacity: activeProduct.id === p.id ? 1 : 0.9,
                                 transition: 'opacity 0.3s ease',
-                                background: 'rgba(0, 0, 0, 0.6)',
+                                background: cardBgColor,
                                 backdropFilter: 'blur(20px)',
                                 borderRadius: '16px',
                                 border: activeProduct.id === p.id
                                     ? `2px solid ${p.accent}`
-                                    : '1px solid rgba(255, 255, 255, 0.1)',
+                                    : `1px solid ${cardBorderColor}`,
                                 boxShadow: activeProduct.id === p.id
-                                    ? `0 0 30px ${p.accent}44, 0 10px 40px rgba(0,0,0,0.5)`
-                                    : '0 10px 30px rgba(0,0,0,0.3)'
+                                    ? `0 0 30px ${p.accent}44, 0 10px 40px ${theme === 'light' ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.5)'}`
+                                    : `0 10px 30px ${theme === 'light' ? 'rgba(0,0,0,0.1)' : 'rgba(0,0,0,0.3)'}`
                             }}
                         >
                             <div style={{
@@ -294,8 +335,8 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
 
                             <div style={{
                                 padding: '12px',
-                                borderTop: '1px solid rgba(0, 0, 0, 0.1)',
-                                background: '#ffffff'
+                                borderTop: `1px solid ${cardBorderColor}`,
+                                background: theme === 'light' ? '#f8f8f8' : '#ffffff'
                             }}>
                                 <p style={{
                                     fontSize: '0.7rem',
@@ -347,7 +388,122 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                     background: ${activeProduct.accent}22 !important;
                     border-color: ${activeProduct.accent} !important;
                 }
+
+                /* Masonry Gallery Styles */
+                .masonry-item {
+                    break-inside: avoid;
+                    margin-bottom: 1rem;
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: all 0.8s ease-out;
+                }
+
+                .masonry-item.visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                .masonry-item-inner {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 2px;
+                    cursor: pointer;
+                    background: ${masonryItemBg};
+                }
+
+                .masonry-item-inner img,
+                .masonry-item-inner iframe {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    filter: grayscale(10%);
+                    transition: all 0.7s ease-out;
+                }
+
+                .masonry-item:hover .masonry-item-inner img,
+                .masonry-item:hover .masonry-item-inner iframe {
+                    filter: grayscale(0%);
+                    transform: scale(1.05);
+                }
             `}</style>
+
+            {/* MASONRY GALLERY SECTION */}
+            <main style={{
+                minHeight: '100vh',
+                width: '100%',
+                maxWidth: '1800px',
+                margin: '0 auto',
+                padding: '128px 24px 96px',
+                background: masonryBg,
+                zIndex: 20,
+                position: 'relative'
+            }}>
+                <div style={{
+                    columns: window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1,
+                    gap: '16px',
+                    columnGap: '16px'
+                }}>
+                    {sortedProducts.map((product, index) => {
+                        // Define varying aspect ratios for visual interest
+                        const aspectRatios = ['3/4', '1/1', '2/3', '4/3', '3/5', '16/9', '3/4', '4/5', '1/1', '2/3'];
+                        const aspectRatio = aspectRatios[index % aspectRatios.length];
+
+                        return (
+                            <div
+                                key={product.id}
+                                className="masonry-item visible"
+                                onClick={() => onSelectProduct(product)}
+                                style={{
+                                    display: 'inline-block',
+                                    width: '100%',
+                                    marginBottom: '16px'
+                                }}
+                            >
+                                <div
+                                    className="masonry-item-inner"
+                                    style={{
+                                        aspectRatio: aspectRatio,
+                                        position: 'relative'
+                                    }}
+                                >
+                                    <iframe
+                                        src={product.url}
+                                        title={product.name}
+                                        style={{
+                                            position: 'absolute',
+                                            top: 0,
+                                            left: 0,
+                                            width: '100%',
+                                            height: '100%',
+                                            border: 'none',
+                                            background: '#fff',
+                                            pointerEvents: 'none'
+                                        }}
+                                    />
+                                </div>
+                                <div style={{
+                                    marginTop: '8px',
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'baseline',
+                                    paddingBottom: '8px',
+                                    transition: 'all 0.3s ease'
+                                }}>
+                                    <p style={{
+                                        fontSize: '11px',
+                                        color: masonryTextColor,
+                                        fontWeight: 700,
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.05em'
+                                    }}>
+                                        {product.name} — {product.category}
+                                    </p>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </main>
         </section >
     );
 };

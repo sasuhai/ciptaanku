@@ -21,5 +21,6 @@ export const db = getFirestore(app);
 
 // Collection names with CK prefix as requested
 export const COLLECTIONS = {
-    PRODUCTS: 'CKProducts'
+    PRODUCTS: 'CKProducts',
+    SETTINGS: 'CKSettings'
 };
