@@ -1,0 +1,370 @@
+<html lang="en" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script></head>
+<body class="min-h-screen flex items-start justify-center bg-slate-950 bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/163a513e-f4e5-4d3f-abca-c1896f2d32a2_3840w.jpg)] bg-cover pt-12 pr-8 pb-12 pl-8" style="font-family:'Inter',sans-serif;">
+  <div class="w-full max-w-[1700px] border rounded-2xl shadow-sm flex flex-col md:flex-row overflow-hidden bg-black border-slate-800/80 text-slate-100">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 border-r backdrop-blur-xl p-6 flex flex-col gap-8 bg-slate-950/60 border-slate-800/60">
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+        <div class="rounded-lg w-4 h-4 bg-slate-300"></div>
+        <h1 class="text-xl font-medium tracking-tight">CryptoFlow</h1>
+      </div>
+
+      <!-- User -->
+      <div class="flex items-center gap-3">
+        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/44650633-d956-4f56-b5cb-ab57b360a6ef_320w.jpg" alt="avatar" class="w-12 h-12 rounded-full object-cover border border-slate-800" style="">
+        <div class="flex-1">
+          <p class="font-medium leading-tight">Marcus Chen</p>
+          <span class="text-xs text-slate-500">@mchen_crypto</span>
+        </div>
+        <button class="p-2 rounded-md border border-transparent hover:bg-slate-900 hover:border-slate-800">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="more-vertical" class="lucide lucide-more-vertical w-4 h-4 text-slate-600"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+        </button>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="space-y-1 flex-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md border bg-slate-900 border-slate-800/60">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layout-dashboard" class="lucide lucide-layout-dashboard w-4 h-4 text-slate-400"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+          <span class="text-sm font-medium text-slate-300">Portfolio</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md border border-transparent hover:bg-slate-950 hover:border-slate-800/60">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="pie-chart" class="lucide lucide-pie-chart w-4 h-4 text-slate-500"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"></path><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path></svg>
+          <span class="text-sm font-medium text-slate-400">Analytics</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md border border-transparent hover:bg-slate-950 hover:border-slate-800/60">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="database" class="lucide lucide-database w-4 h-4 text-slate-500"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5V19A9 3 0 0 0 21 19V5"></path><path d="M3 12A9 3 0 0 0 21 12"></path></svg>
+          <span class="text-sm font-medium text-slate-400">Holdings</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md border border-transparent hover:bg-slate-950 hover:border-slate-800/60">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="repeat" class="lucide lucide-repeat w-4 h-4 text-slate-500"><path d="m17 2 4 4-4 4"></path><path d="M3 11v-1a4 4 0 0 1 4-4h14"></path><path d="m7 22-4-4 4-4"></path><path d="M21 13v1a4 4 0 0 1-4 4H3"></path></svg>
+          <span class="text-sm font-medium text-slate-400">Exchange</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-md border border-transparent relative hover:bg-slate-950 hover:border-slate-800/60">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" class="lucide lucide-activity w-4 h-4 text-slate-500"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+          <span class="text-sm font-medium text-slate-400">History</span>
+          <span class="absolute -right-2 -top-1 text-xs font-medium rounded-full w-5 h-5 flex items-center justify-center bg-slate-400 text-black">3</span>
+        </a>
+      </nav>
+
+      <!-- Premium Card -->
+      <div class="bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/b94a57ff-aaaa-45a8-9a5d-9868d85b6eaa_800w.jpg)] bg-cover border-slate-700/60 rounded-xl pt-6 pr-6 pb-6 pl-6">
+        <h2 class="text-lg font-medium mb-2 text-slate-200">Pro Features</h2>
+        <p class="text-sm leading-snug mb-4 text-slate-400">Unlock advanced analytics and real-time alerts</p>
+        <button class="w-full py-2 rounded-lg text-sm font-medium border bg-slate-200 text-black hover:bg-slate-300 border-slate-300">Upgrade Plan</button>
+      </div>
+
+      <!-- Logout -->
+      <button class="mt-6 flex items-center gap-2 text-sm text-slate-500 hover:text-slate-300">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="log-out" class="lucide lucide-log-out w-4 h-4"><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path></svg>
+        Sign out
+      </button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto pt-8 pr-8 pb-8 pl-8 space-y-8">
+      <!-- Top Row -->
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <h2 class="text-2xl font-medium tracking-tight">ETH/USD</h2>
+          <button class="p-1 rounded-md border bg-slate-900 border-slate-800 hover:bg-slate-800">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-4 h-4 text-slate-400"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+          <span class="text-xl font-medium text-slate-200">2,847.92</span>
+          <span class="text-sm font-medium text-emerald-400">+ 127.45 USD (4.69%)</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <input type="text" placeholder="Search assets..." class="border rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-transparent placeholder-slate-400 bg-slate-950 border-slate-800">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search w-4 h-4 absolute left-3 top-2.5 text-slate-600"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+          </div>
+          <button class="w-10 h-10 rounded-lg border flex items-center justify-center bg-slate-950 border-slate-800 hover:bg-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bell" class="lucide lucide-bell w-4 h-4 text-slate-500"><path d="M10.268 21a2 2 0 0 0 3.464 0"></path><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"></path></svg>
+          </button>
+          <button class="w-10 h-10 rounded-lg border flex items-center justify-center bg-slate-950 border-slate-800 hover:bg-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="settings" class="lucide lucide-settings w-4 h-4 text-slate-500"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+      <section class="bg-slate-950/60 bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/163a513e-f4e5-4d3f-abca-c1896f2d32a2_1600w.jpg)] bg-cover border-slate-800/60 rounded-xl pt-6 pr-6 pb-6 pl-6">
+        <!-- Timeframe tabs -->
+        <div class="flex items-center gap-3 mb-6">
+          <button data-range="day" class="time-range active-range text-xs px-3 py-1 rounded-full border bg-slate-300 text-black border-slate-400">24H</button>
+          <button data-range="week" class="time-range border text-xs px-3 py-1 rounded-full bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-400">7D</button>
+          <button data-range="month" class="time-range border text-xs px-3 py-1 rounded-full bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-400">30D</button>
+          <button data-range="year" class="time-range border text-xs px-3 py-1 rounded-full bg-slate-900 border-slate-800 hover:bg-slate-800 text-slate-400">1Y</button>
+          <div class="ml-auto flex gap-2">
+            <button class="chart-type active-chart px-2 py-1 rounded-md border bg-slate-300 text-black border-slate-400" data-type="line">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" class="lucide lucide-activity w-4 h-4"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+            </button>
+            <button class="chart-type border px-2 py-1 rounded-md bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" data-type="bar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bar-chart-3" class="lucide lucide-bar-chart-3 w-4 h-4"><path d="M3 3v16a2 2 0 0 0 2 2h16"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path></svg>
+            </button>
+          </div>
+        </div>
+        <!-- Canvas -->
+        <div class="h-72">
+          <canvas id="priceChart" height="1488" width="1488" style="display: block; box-sizing: border-box; height: 744px; width: 744px;" class=""></canvas>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- News -->
+        <section class="">
+          <div class="flex items-center mb-4">
+            <h3 class="text-lg font-medium flex-1 tracking-tight">Market Updates</h3>
+            <button class="flex items-center gap-1 text-sm text-slate-500 border rounded-md px-2 py-1 hover:text-slate-300 border-slate-800">
+              Recent
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-4 h-4"><path d="m6 9 6 6 6-6"></path></svg>
+            </button>
+          </div>
+          <div class="space-y-4">
+            <article class="flex gap-3 p-3 rounded-lg border border-slate-800/60 hover:bg-slate-950/60">
+              <div class="border flex items-center justify-center w-10 h-10 rounded-md bg-blue-950 border-blue-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trending-up" class="lucide lucide-trending-up w-5 h-5 text-blue-400"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
+              </div>
+              <div class="">
+                <p class="text-sm font-medium leading-tight text-slate-200">Ethereum Layer 2 Solutions Show Strong Growth</p>
+                <span class="text-xs text-slate-500">3h ago • Market Analysis</span>
+              </div>
+            </article>
+            <article class="flex gap-3 p-3 rounded-lg border border-slate-800/60 hover:bg-slate-950/60">
+              <div class="border flex items-center justify-center w-10 h-10 rounded-md bg-emerald-950 border-emerald-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shield-check" class="lucide lucide-shield-check w-5 h-5 text-emerald-400"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+              </div>
+              <div class="">
+                <p class="text-sm font-medium leading-tight text-slate-200">New Regulatory Framework Brings Clarity to DeFi</p>
+                <span class="text-xs text-slate-500">6h ago • Regulation</span>
+              </div>
+            </article>
+            <article class="flex gap-3 p-3 rounded-lg border border-slate-800/60 hover:bg-slate-950/60">
+              <div class="border flex items-center justify-center w-10 h-10 rounded-md bg-amber-950 border-amber-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="coins" class="lucide lucide-coins w-5 h-5 text-amber-400"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg>
+              </div>
+              <div class="">
+                <p class="text-sm font-medium leading-tight text-slate-200">Institutional Adoption Reaches New Milestone</p>
+                <span class="text-xs text-slate-500">12h ago • Institutional</span>
+              </div>
+            </article>
+            <article class="flex gap-3 p-3 rounded-lg border border-slate-800/60 hover:bg-slate-950/60">
+              <div class="border flex items-center justify-center w-10 h-10 rounded-md bg-purple-950 border-purple-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="zap" class="lucide lucide-zap w-5 h-5 text-purple-400"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path></svg>
+              </div>
+              <div>
+                <p class="text-sm font-medium leading-tight text-slate-200">Lightning Network Capacity Hits Record High</p>
+                <span class="text-xs text-slate-500">1d ago • Technology</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Rewards -->
+        <section class="">
+          <div class="flex items-center mb-4">
+            <h3 class="text-lg font-medium flex-1 tracking-tight">Achievement Tasks</h3>
+          </div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-800/60">
+              <input type="checkbox" class="mt-1 w-4 h-4 rounded-sm accent-slate-400">
+              <div class="">
+                <p class="text-sm font-medium leading-tight text-slate-200">Complete your first crypto transaction</p>
+                <span class="text-xs text-slate-500">Reward: 25 USD bonus</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-800/60">
+              <input type="checkbox" class="mt-1 w-4 h-4 rounded-sm accent-slate-400">
+              <div>
+                <p class="text-sm font-medium leading-tight text-slate-200">Set up portfolio tracking alerts</p>
+                <span class="text-xs text-slate-500">Reward: 15 USD bonus</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 p-3 rounded-lg border border-slate-800/60">
+              <input type="checkbox" class="mt-1 w-4 h-4 rounded-sm accent-slate-400">
+              <div>
+                <p class="text-sm font-medium leading-tight text-slate-200">Share referral link with friends</p>
+                <span class="text-xs text-slate-500">Reward: 35 USD per signup</span>
+              </div>
+            </li>
+          </ul>
+          <button class="mt-6 w-full border rounded-lg py-2 text-sm font-medium transition-colors border-slate-400 text-slate-300 hover:bg-slate-300 hover:text-black">Claim Rewards</button>
+        </section>
+      </div>
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="w-full lg:w-80 bg-slate-950/60 border-slate-800/60 border-l pt-6 pr-6 pb-6 pl-6 backdrop-blur-xl space-y-8">
+      <!-- Balance -->
+      <div class="bg-black bg-[url(https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4d74ed30-6f3a-4ffd-81e1-7530eb6610ca_800w.jpg)] bg-cover border-slate-800/60 rounded-xl pt-6 pr-6 pb-6 pl-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm text-slate-500">Portfolio Value</h3>
+          <h3 class="text-sm text-slate-500">24h Change</h3>
+        </div>
+        <div class="flex items-center justify-between">
+          <p class="text-2xl font-medium tracking-tight">128,642.78 <span class="text-sm font-normal text-slate-500">USD</span></p>
+          
+        </div>
+      </div>
+
+      <!-- Exchange -->
+      <div class="border rounded-xl p-6 space-y-4 bg-black border-slate-800/60">
+        <h3 class="text-sm text-slate-500 mb-2">Quick Exchange</h3>
+        <p class="text-xs text-slate-500 border rounded-md px-3 py-2 border-slate-800 bg-slate-950">1 ETH = 2,847.92 USD</p>
+
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs text-slate-500 mb-1 block">From</label>
+            <div class="flex items-center gap-2 border rounded-md px-3 py-2 bg-slate-950 border-slate-800">
+              <input type="number" placeholder="0.00" class="flex-1 bg-transparent text-sm outline-none text-slate-300">
+              <div class="flex items-center gap-1">
+                <span class="text-sm font-medium text-slate-300">ETH</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-4 h-4 text-slate-600"><path d="m6 9 6 6 6-6"></path></svg>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <button class="w-9 h-9 flex items-center justify-center rounded-full border bg-slate-900 border-slate-800 hover:bg-slate-800">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="repeat" class="lucide lucide-repeat w-4 h-4 text-slate-400"><path d="m17 2 4 4-4 4"></path><path d="M3 11v-1a4 4 0 0 1 4-4h14"></path><path d="m7 22-4-4 4-4"></path><path d="M21 13v1a4 4 0 0 1-4 4H3"></path></svg>
+            </button>
+          </div>
+          <div class="">
+            <label class="text-xs text-slate-500 mb-1 block">To</label>
+            <div class="flex items-center gap-2 border rounded-md px-3 py-2 bg-slate-950 border-slate-800">
+              <input type="number" placeholder="0.00" class="flex-1 bg-transparent text-sm outline-none text-slate-300">
+              <div class="flex items-center gap-1">
+                <span class="text-sm font-medium text-slate-300">USD</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-4 h-4 text-slate-600"><path d="m6 9 6 6 6-6"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="w-full rounded-lg py-2 text-sm font-medium transition-colors bg-slate-300 hover:bg-slate-200 text-black">Execute Trade</button>
+      </div>
+
+      <!-- Transactions -->
+      <div class="">
+        <div class="flex items-center mb-4">
+          <h3 class="text-lg font-medium flex-1 tracking-tight">Recent Activity</h3>
+          <button class="flex items-center gap-1 text-sm text-slate-500 border rounded-md px-2 py-1 hover:text-slate-300 border-slate-800">
+            All
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-4 h-4"><path d="m6 9 6 6 6-6"></path></svg>
+          </button>
+        </div>
+        <ul class="space-y-3">
+          <li class="border rounded-md p-3 flex items-center justify-between bg-black border-slate-800/60">
+            <div class="flex items-center gap-3">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/071f0f74-e190-4f94-93fb-223ca6938511_320w.jpg" alt="matic" class="w-6 h-6 object-cover" style="">
+              <div>
+                <p class="text-sm font-medium text-slate-200">Polygon</p>
+                <span class="text-xs text-slate-500">Purchase</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-medium text-emerald-400">+ 2,840 MATIC</p>
+              <span class="text-xs text-slate-500">2:15 PM</span>
+            </div>
+          </li>
+          <li class="border rounded-md p-3 flex items-center justify-between bg-black border-slate-800/60">
+            <div class="flex items-center gap-3">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/06bab073-5517-4b47-8a01-7c564204b890_800w.jpg" alt="link" class="w-6 h-6 object-cover" style="">
+              <div>
+                <p class="text-sm font-medium text-slate-200">Chainlink</p>
+                <span class="text-xs text-slate-500">Sale</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-medium text-slate-400">- 185 LINK</p>
+              <span class="text-xs text-slate-500">11:42 AM</span>
+            </div>
+          </li>
+          <li class="border rounded-md p-3 flex items-center justify-between bg-black border-slate-800/60">
+            <div class="flex items-center gap-3">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/eafebcb9-0bdc-43b2-a25d-18eb75a43c9f_320w.jpg" alt="avax" class="w-6 h-6 object-cover" style="">
+              <div>
+                <p class="text-sm font-medium text-slate-200">Avalanche</p>
+                <span class="text-xs text-slate-500">Purchase</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-medium text-emerald-400">+ 47 AVAX</p>
+              <span class="text-xs text-slate-500">9:28 AM</span>
+            </div>
+          </li>
+          <li class="border rounded-md p-3 flex items-center justify-between bg-black border-slate-800/60">
+            <div class="flex items-center gap-3">
+              <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/a33583cb-28b5-42a8-aa70-b811dc4963f8_320w.jpg" alt="atom" class="w-6 h-6 object-cover" style="">
+              <div>
+                <p class="text-sm font-medium text-slate-200">Cosmos</p>
+                <span class="text-xs text-slate-500">Purchase</span>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-medium text-emerald-400">+ 324 ATOM</p>
+              <span class="text-xs text-slate-500">Yesterday</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  lucide.createIcons();
+
+  // Chart Data
+  const ctx = document.getElementById('priceChart').getContext('2d');
+  const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+  gradient.addColorStop(0, 'rgba(71,85,105,0.1)');
+  gradient.addColorStop(1, 'rgba(71,85,105,0)');
+
+  const chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['6 AM','9 AM','12 PM','3 PM','6 PM','9 PM','12 AM','3 AM','6 AM'],
+      datasets: [{
+        label: 'ETH',
+        data: [2724,2789,2856,2834,2891,2947,2923,2876,2847],
+        fill: true,
+        backgroundColor: gradient,
+        borderColor: '#475569',
+        tension: 0.4,
+        pointRadius: 0,
+      }]
+    },
+    options: {
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{display:false},
+        y:{display:false}
+      }
+    }
+  });
+
+  // Range Buttons
+  document.querySelectorAll('.time-range').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.time-range').forEach(b=>b.classList.remove('bg-slate-700','text-white','active-range'));
+      btn.classList.add('bg-slate-700','text-white','active-range');
+    });
+  });
+
+  // Chart Type Switch
+  document.querySelectorAll('.chart-type').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.chart-type').forEach(b=>b.classList.remove('bg-slate-700','text-white','active-chart'));
+      btn.classList.add('bg-slate-700','text-white','active-chart');
+      chart.config.type = btn.dataset.type;
+      chart.update();
+    });
+  });
+</script>
+
+</body></html>
