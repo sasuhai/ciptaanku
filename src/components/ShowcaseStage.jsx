@@ -15,7 +15,7 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
         const processImage = async () => {
             const img = new Image();
             img.crossOrigin = "anonymous";
-            img.src = "/office_mockup.jpg";
+            img.src = `${import.meta.env.BASE_URL}office_mockup.jpg`;
             await new Promise(resolve => img.onload = resolve);
 
             const canvas = document.createElement('canvas');
@@ -174,7 +174,7 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                 zIndex: 5,
                 marginLeft: 'auto', // Align to right
                 marginRight: 0,
-                backgroundImage: 'url("/office_mockup.jpg")',
+                backgroundImage: `url("${import.meta.env.BASE_URL}office_mockup.jpg")`,
                 backgroundSize: 'cover',
                 boxShadow: '0 50px 100px rgba(0,0,0,0.5)',
                 overflow: 'visible', // Changed from 'hidden' to show carousel cards
