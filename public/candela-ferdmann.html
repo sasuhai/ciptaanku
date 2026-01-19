@@ -1,0 +1,752 @@
+<html lang="es" class="scroll-smooth"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candela Ferdmann | Portfolio &amp; Mentorships</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Inter', sans-serif; }
+.serif-title { font-family: 'Instrument Serif', serif; }
+/* Language State */
+.lang-en { display: none; }
+body.english-mode .lang-es { display: none; }
+body.english-mode .lang-en { display: block; }
+/* Custom Switch */
+body.english-mode #toggle-dot { transform: translateX(100%); }
+/* Masonry & Animations */
+.masonry-item { break-inside: avoid; margin-bottom: 1rem; opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
+.masonry-item.visible { opacity: 1; transform: translateY(0); }
+/* Accordion Animation */
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; opacity: 0; }
+.accordion-item.active .accordion-content { max-height: 200px; opacity: 1; }
+.accordion-item.active .accordion-icon { transform: rotate(180deg); }
+/* Cart Drawer */
+#cart-drawer { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+#cart-drawer.open { transform: translateX(0); }
+#cart-overlay { transition: opacity 0.3s ease; pointer-events: none; opacity: 0; }
+#cart-overlay.open { pointer-events: auto; opacity: 1; }
+/* Lightbox */
+#lightbox { transition: opacity 0.3s ease; }
+#lightbox.hidden { opacity: 0; pointer-events: none; }
+#lightbox:not(.hidden) { opacity: 1; pointer-events: auto; }
+</style>
+<link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style><link id="all-fonts-link-font-newsreader" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap"><style id="all-fonts-style-font-newsreader">.font-newsreader { font-family: 'Newsreader', serif !important; }</style><link id="all-fonts-link-font-google-sans-flex" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-google-sans-flex">.font-google-sans-flex { font-family: 'Google Sans Flex', sans-serif !important; }</style><link id="all-fonts-link-font-oswald" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-oswald">.font-oswald { font-family: 'Oswald', sans-serif !important; }</style><link id="all-fonts-link-font-dm-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-dm-sans">.font-dm-sans { font-family: 'DM Sans', sans-serif !important; }</style></head>
+<body class="antialiased selection:bg-rose-100 selection:text-stone-900 transition-colors duration-500 text-stone-800 bg-[#fcfbf9]">
+
+    <!-- Header -->
+    <nav class="fixed transition-all duration-300 z-40 bg-[#fcfbf9]/95 border-stone-100 border-b pt-6 pb-6 top-0 right-0 left-0 backdrop-blur-sm">
+        <div class="md:px-12 flex max-w-[1800px] mr-auto ml-auto pr-6 pl-6 items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="group z-50">
+                <h1 class="text-lg tracking-tight font-semibold text-stone-900 uppercase">
+                    Candela Ferdmann
+                </h1>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex text-[11px] uppercase font-semibold text-stone-500 tracking-[0.2em] space-x-8 items-center">
+                <a href="#about" class="hover:text-stone-900 transition-colors">
+                    <span class="lang-es">Bio</span><span class="lang-en">Bio</span>
+                </a>
+                <a href="#mentorship" class="hover:text-stone-900 transition-colors">
+                    <span class="lang-es">Mentorías</span><span class="lang-en">Mentorships</span>
+                </a>
+                <a href="#workshops" class="hover:text-stone-900 transition-colors">
+                    <span class="lang-es">Talleres</span><span class="lang-en">Workshops</span>
+                </a>
+                <a href="#faq" class="hover:text-stone-900 transition-colors">
+                    <span class="lang-es">FAQ</span><span class="lang-en">FAQ</span>
+                </a>
+                <a href="#contact" class="hover:text-stone-900 transition-colors">
+                    <span class="lang-es">Contacto</span><span class="lang-en">Contact</span>
+                </a>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-6 z-50">
+                <!-- Language Toggle -->
+                <div class="flex items-center gap-3 cursor-pointer select-none group" onclick="toggleLanguage()">
+                    <span class="text-[10px] font-bold text-stone-400 group-hover:text-stone-600 transition-colors tracking-wider">ES</span>
+                    <div class="transition-colors duration-300 group-hover:bg-stone-300 bg-stone-200 w-8 h-4 rounded-full relative shadow-inner">
+                        <div id="toggle-dot" class="absolute left-0.5 top-0.5 w-3 h-3 bg-white rounded-full shadow-sm transition-transform duration-300"></div>
+                    </div>
+                    <span class="text-[10px] group-hover:text-stone-600 transition-colors font-bold text-stone-400 tracking-wider">EN</span>
+                </div>
+
+                <!-- Cart Button -->
+                <button onclick="toggleCart()" class="relative text-stone-800 hover:text-rose-500 transition-colors group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="shopping-bag" class="lucide lucide-shopping-bag w-5 h-5 stroke-[1.5]"><path d="M16 10a4 4 0 0 1-8 0"></path><path d="M3.103 6.034h17.794"></path><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"></path></svg>
+                    <span class="absolute -top-1 -right-1 bg-rose-500 text-white text-[9px] font-bold w-3.5 h-3.5 flex items-center justify-center rounded-full group-hover:scale-110 transition-transform">2</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-stone-800 hover:text-stone-500 transition-colors" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu w-6 h-6 stroke-[1.5]"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-[#fcfbf9] border-t border-stone-100 p-6 flex flex-col space-y-6 text-center text-sm font-medium shadow-lg h-screen">
+            <a href="#work" class="text-stone-600 hover:text-stone-900"><span class="lang-es">Trabajos</span><span class="lang-en">Work</span></a>
+            <a href="#about" class="text-stone-600 hover:text-stone-900"><span class="lang-es">Bio</span><span class="lang-en">Bio</span></a>
+            <a href="#mentorship" class="text-stone-600 hover:text-stone-900"><span class="lang-es">Mentorías</span><span class="lang-en">Mentorships</span></a>
+            <a href="#workshops" class="text-stone-600 hover:text-stone-900"><span class="lang-es">Cursos</span><span class="lang-en">Workshops</span></a>
+            <a href="#contact" class="text-stone-600 hover:text-stone-900"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+        </div>
+    </nav>
+
+    <!-- Cart Sidebar Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-stone-900/20 backdrop-blur-[2px] z-50" onclick="toggleCart()"></div>
+
+    <!-- Cart Drawer -->
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-screen w-full sm:w-[400px] bg-white z-[60] shadow-2xl transform translate-x-full border-l border-stone-100 flex flex-col">
+        <!-- Header -->
+        <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-[#fcfbf9]">
+            <h2 class="text-xs uppercase font-bold tracking-[0.2em] text-stone-900">
+                <span class="lang-es">Tu Carrito (2)</span><span class="lang-en">Your Cart (2)</span>
+            </h2>
+            <button onclick="toggleCart()" class="text-stone-400 hover:text-stone-900 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x w-5 h-5 stroke-[1.5]"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Items -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Item 1 -->
+            <div class="flex gap-4">
+                <div class="w-20 h-24 bg-stone-100 rounded-[2px] overflow-hidden flex-shrink-0">
+                     <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/b37780e0-ff81-4a8b-8077-b72e76cc6f6b_800w.png" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-semibold text-stone-900 font-serif leading-tight mb-1">Workshop Collage Digital</h3>
+                        <p class="text-xs text-stone-500">Online • Ago 2024</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-xs font-medium underline text-stone-400 cursor-pointer hover:text-stone-900">Eliminar</span>
+                        <span class="text-sm font-bold text-stone-900">$45.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="flex gap-4">
+                <div class="w-20 h-24 bg-stone-100 rounded-[2px] overflow-hidden flex-shrink-0">
+                     <div class="w-full h-full flex items-center justify-center bg-[#f2f0eb]">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles w-6 h-6 text-stone-400 stroke-[1]"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+                     </div>
+                </div>
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-sm font-semibold text-stone-900 font-serif leading-tight mb-1">Mentoría 1:1 (Sesión)</h3>
+                        <p class="text-xs text-stone-500">1 Hora • Zoom</p>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <span class="text-xs font-medium underline text-stone-400 cursor-pointer hover:text-stone-900">Eliminar</span>
+                        <span class="text-sm font-bold text-stone-900">$60.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-6 border-t border-stone-100 bg-[#fcfbf9]">
+            <div class="flex justify-between items-center mb-6">
+                <span class="text-xs uppercase font-bold tracking-widest text-stone-500">Subtotal</span>
+                <span class="text-lg font-bold text-stone-900 serif-title">$105.00</span>
+            </div>
+            <button class="w-full bg-stone-900 hover:bg-stone-800 text-white py-4 rounded-[2px] transition-colors flex items-center justify-center gap-2 group">
+                <span class="text-[11px] font-bold tracking-[0.15em] uppercase"><span class="lang-es">Checkout</span><span class="lang-en">Checkout</span></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4 stroke-[1.5] group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Masonry Gallery -->
+    <main class="min-h-screen md:px-12 md:pb-12 max-w-[1800px] mr-auto ml-auto pt-32 pr-6 pb-24 pl-6" id="work">
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4 gap-x-4 gap-y-4">
+            <!-- Items (Existing content preserved) -->
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[3/4]" onclick="openLightbox(0)">
+                     <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4f10382e-4629-4edb-a416-d79f0dcb9479_800w.png" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Proyecto personal — Collage digital</span>
+                        <span class="lang-en">Bologna 2016 — Collage</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-square" onclick="openLightbox(1)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/b37780e0-ff81-4a8b-8077-b72e76cc6f6b_800w.png" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Proyecto personal  — tecnica mixta</span>
+                        <span class="lang-en">Forest — Indian Ink</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[2/3]" onclick="openLightbox(2)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/89555010-dbb4-444b-912e-6a1a876f8172_800w.png" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Ilustración personailzada — técnica mixta</span>
+                        <span class="lang-en">Memories — Mixed Media</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[4/3]" onclick="openLightbox(3)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1bc4c81d-bed4-4e20-b320-906bb4e55387_800w.png" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Silent Book — Digital</span>
+                        <span class="lang-en">Silent Book — Digital</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[3/4]" onclick="openLightbox(4)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/931ec52d-5488-46b5-b3dd-5d041329a55f_800w.jpg" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es" style="">Bombo — collage</span>
+                        <span class="lang-en">Birds — Watercolor</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-square" onclick="openLightbox(5)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/445cfc31-e2ca-4bdf-b0fb-4a2c3f2a047b_800w.png" alt="Illustration" class="grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img w-full h-full object-cover">
+                </div>
+                <div class="flex transition-all mt-2 pb-2 items-baseline justify-between">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Ilustración personailzada — técnica mixta</span>
+                        <span class="lang-en">Winter — Collage</span>
+                    </p>
+                </div>
+            </div>
+             <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[3/5]" onclick="openLightbox(6)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/bda59e4d-a1db-4d7f-be1f-1c0b1bc23c1a_800w.png" alt="Illustration" class="grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img w-full h-full object-cover">
+                </div>
+                 <div class="flex transition-all mt-2 pb-2 items-baseline justify-between">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Proyecto personal — Collage digital</span>
+                        <span class="lang-en">Botanicals — Pencil</span>
+                    </p>
+                </div>
+            </div>
+             <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[4/3]" onclick="openLightbox(7)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/912ef7b6-0adb-4a42-b4c7-470a2ff6afa6_800w.png" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                 <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Proyecto personal — Técnica mixta</span>
+                        <span class="lang-en">Editorial — Digital</span>
+                    </p>
+                </div>
+            </div>
+             <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-square" onclick="openLightbox(8)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/cdf688da-6892-407f-95d0-1d1664f7e371_800w.png" alt="Illustration" class="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img">
+                </div>
+                 <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Proyecto personal — collage</span>
+                        <span class="lang-en">Characters — Sketch</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[3/4]" onclick="openLightbox(9)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/27fee490-8611-4f5c-af99-11f700381bb1_800w.png" alt="Illustration" class="grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img w-full h-full object-cover">
+                </div>
+                 <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">bologna 2016 — tecnica mixta</span>
+                        <span class="lang-en">Nocturne — Ink</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[16/9]" onclick="openLightbox(10)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/1bc4c81d-bed4-4e20-b320-906bb4e55387_800w.png" alt="Illustration" class="grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img w-full h-full object-cover">
+                </div>
+                 <div class="flex transition-all mt-2 pb-2 items-baseline justify-between">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">Proyecto personal — tecnica mixta</span>
+                        <span class="lang-en">Landscape — Digital</span>
+                    </p>
+                </div>
+            </div>
+            <div class="masonry-item group relative w-full inline-block visible">
+                <div class="relative overflow-hidden rounded-[2px] cursor-zoom-in aspect-[2/3]" onclick="openLightbox(11)">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/2ae8f893-d365-47b4-b09f-4142f740f1dc_800w.jpg" alt="Illustration" class="grayscale-[10%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out gallery-img w-full h-full object-cover">
+                </div>
+                 <div class="mt-2 flex justify-between items-baseline pb-2 transition-all">
+                    <p class="text-[11px] text-stone-900 font-bold uppercase tracking-wide">
+                        <span class="lang-es">bombo — ilustración de libro infantil</span>
+                        <span class="lang-en">Portrait — Painted Photo</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- About Section (Height Reduced) -->
+    <section class="bg-white border-stone-100 border-t pt-20 pb-20" id="about">
+        <div class="max-w-6xl mx-auto px-6 md:px-12 w-full">
+            <h3 class="uppercase text-xs font-bold text-stone-400 tracking-[0.2em] text-center mb-16">
+                <span class="lang-es">Sobre Mí</span><span class="lang-en">About Me</span>
+            </h3>
+
+            <div class="flex flex-col md:flex-row items-start gap-12 md:gap-24">
+                <!-- Artist Photo -->
+                <div class="w-full md:w-5/12 sticky top-24">
+                    <div class="aspect-[3/4] bg-stone-100 rounded-[2px] overflow-hidden relative group">
+                         <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/5a585a85-95c5-4651-8438-6cb5386b996f_800w.png" alt="Candela Ferdmann" class="transition-all hover:grayscale-0 duration-700 w-full h-full object-cover grayscale">
+                    </div>
+                </div>
+
+                <!-- Text & Conversion -->
+                <div class="md:w-7/12 w-full pt-4">
+                     <div class="text-base md:text-lg font-light text-stone-700 leading-relaxed space-y-6">
+                        <div class="lang-es space-y-6">
+                            <h2 class="text-3xl font-normal text-stone-900 mb-6 serif-title tracking-tight">Hola, soy Candela.</h2>
+                            <p class="text-stone-600">Soy Licenciada en Artes Visuales e Ilustradora en Buenos Aires. Mi trabajo explora la sutil relación entre la naturaleza, la infancia y la memoria, utilizando técnicas mixtas y digitales.</p>
+                            <p class="text-stone-600">Además de mi trabajo editorial, me apasiona la enseñanza. , buscando desbloquear la creatividad a través del juego y la experimentación.</p>
+                            <p class="text-stone-600">Si buscás potenciar tu carrera artística o querés aprender una nueva técnica, te invito a charlar.</p>
+                        </div>
+                        <div class="lang-en space-y-6">
+                            <h2 class="text-3xl font-normal text-stone-900 mb-6 serif-title tracking-tight">Hi, I'm Candela.</h2>
+                            <p class="text-stone-600">I am a Visual Arts graduate and Illustrator based in Buenos Aires. My work explores the subtle relationship between nature, childhood, and memory, using both mixed media and digital techniques.</p>
+                            <p class="text-stone-600">Beyond editorial work, I am passionate about teaching. , aiming to unlock creativity through play and experimentation.</p>
+                            <p class="text-stone-600">Whether you want to boost your artistic career or learn a new technique, I invite you to connect.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Actions -->
+                    <div class="mt-12 flex flex-col sm:flex-row gap-5">
+                         <a href="https://calendly.com" target="_blank" class="flex items-center justify-center gap-3 px-8 py-3.5 bg-stone-900 hover:bg-stone-700 text-white rounded-[2px] transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar-check" class="lucide lucide-calendar-check w-4 h-4 stroke-[1.5] text-stone-300 group-hover:text-white transition-colors"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="m9 16 2 2 4-4"></path></svg>
+                            <span class="text-[11px] font-bold tracking-widest uppercase"><span class="lang-es">Reservar Charla</span><span class="lang-en">Book a Call</span></span>
+                        </a>
+
+                        <a href="https://instagram.com" target="_blank" class="flex items-center justify-center gap-3 px-8 py-3.5 bg-white border border-stone-200 hover:border-stone-400 text-stone-900 rounded-[2px] transition-all duration-300 hover:bg-stone-50 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram w-4 h-4 stroke-[1.5] text-stone-400 group-hover:text-rose-500 transition-colors"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                            <span class="text-[11px] font-bold tracking-widest uppercase"><span class="lang-es">Seguir en Instagram</span><span class="lang-en">Follow on Instagram</span></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mentorships Section (Height Reduced) -->
+    <section id="mentorship" class="bg-[#f2f0eb] pt-20 pb-20 border-y border-stone-200/50">
+         <div class="max-w-4xl mx-auto px-6 md:px-12 text-center w-full">
+            <div class="inline-flex items-center justify-center p-3 mb-6 bg-white rounded-full shadow-sm">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles w-5 h-5 text-yellow-600 stroke-[1.5]"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-medium text-stone-900 mb-6 serif-title tracking-tight">
+                <span class="lang-es">Mentorías 1:1 para Ilustradores</span>
+                <span class="lang-en">1:1 Mentorships for Illustrators</span>
+            </h2>
+            <p class="text-stone-600 text-base md:text-xl font-light leading-relaxed max-w-2xl mx-auto mb-10">
+                <span class="lang-es">Un espacio personalizado para aprender sobre el oficio, contestar dudas y aprender lo que necesites para tu carrera. Revisamos tu portfolio, desbloqueamos procesos creativos o preparamos tu próximo proyecto editorial.</span>
+                <span class="lang-en">A personalized space to learn about the trade, answer questions, and learn whatever you need for your career. We review your portfolio, unlock creative processes, or prepare your next editorial project.</span>
+            </p>
+             <a href="https://calendly.com" class="inline-flex items-center gap-2 text-stone-900 border-b border-stone-800 pb-1 hover:text-stone-600 hover:border-stone-400 transition-all">
+                <span class="text-xs font-bold uppercase tracking-[0.15em]"><span class="lang-es">Ver horarios disponibles</span><span class="lang-en">Check available times</span></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </a>
+         </div>
+    </section>
+
+    <!-- Workshops Section (Height Reduced) -->
+    <section id="workshops" class="bg-[#fcfbf9] pt-20 pb-20">
+        <div class="md:px-12 max-w-[1800px] mr-auto ml-auto pr-6 pl-6 w-full">
+            <h3 class="text-xs tracking-[0.2em] font-bold text-stone-400 uppercase mb-16 text-center">
+                <span class="lang-es">Cursos &amp; Talleres</span><span class="lang-en">Workshops</span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Workshop 1 -->
+                <div class="group relative hover:-translate-y-1 hover:shadow-lg hover:shadow-stone-200/50 transition-all duration-500 bg-white border border-stone-100 rounded-[2px] p-8 flex flex-col justify-between h-full">
+                    <div class="absolute top-4 right-4 bg-rose-50 text-rose-600 px-2 py-1 rounded-[2px] border border-rose-100">
+                        <span class="text-[9px] font-bold uppercase tracking-wider block">
+                             <span class="lang-es">2 Lugares</span><span class="lang-en">2 Spots</span>
+                        </span>
+                    </div>
+                    <div>
+                        <div class="mb-6 text-stone-400 group-hover:text-rose-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="flower" class="lucide lucide-flower w-8 h-8 stroke-[1]"><circle cx="12" cy="12" r="3"></circle><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"></path><path d="M12 7.5V9"></path><path d="M7.5 12H9"></path><path d="M16.5 12H15"></path><path d="M12 16.5V15"></path><path d="m8 8 1.88 1.88"></path><path d="M14.12 9.88 16 8"></path><path d="m8 16 1.88-1.88"></path><path d="M14.12 14.12 16 16"></path></svg>
+                        </div>
+                        <span class="text-[10px] uppercase block font-bold text-stone-400 tracking-widest mb-3">Online</span>
+                        <h4 class="text-lg font-medium text-stone-900 mb-3 serif-title tracking-tight">
+                            <span class="lang-es">Collage digital</span><span class="lang-en">Digital Collage</span>
+                        </h4>
+                        <p class="leading-relaxed text-sm text-stone-600 mb-6 font-light">
+                            <span class="lang-es">Idear, escanear, recortar y jugar. Nivel inicial.</span>
+                            <span class="lang-en">Ideate, scann, cut and play. Beginner level.</span>
+                        </p>
+                    </div>
+                    <button class="text-left inline-flex items-center text-[10px] font-bold uppercase tracking-widest text-stone-900 opacity-60 group-hover:opacity-100 transition-all">
+                        <span class="lang-es">Agregar al carrito</span><span class="lang-en">Add to cart</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus w-3 h-3 ml-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Workshop 2 -->
+                <div class="group relative hover:-translate-y-1 hover:shadow-lg hover:shadow-stone-200/50 transition-all duration-500 bg-white border border-stone-100 rounded-[2px] p-8 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="mb-6 text-stone-400 group-hover:text-amber-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="scissors" class="lucide lucide-scissors w-8 h-8 stroke-[1]"><circle cx="6" cy="6" r="3"></circle><path d="M8.12 8.12 12 12"></path><path d="M20 4 8.12 15.88"></path><circle cx="6" cy="18" r="3"></circle><path d="M14.8 14.8 20 20"></path></svg>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-stone-400 mb-3 block">Buenos Aires</span>
+                        <h4 class="text-lg font-medium text-stone-900 mb-3 serif-title tracking-tight">
+                            <span class="lang-es">Collage &amp; Papel</span><span class="lang-en">Collage &amp; Paper</span>
+                        </h4>
+                        <p class="leading-relaxed text-sm text-stone-600 mb-6 font-light">
+                            <span class="lang-es">Exploración de texturas, recorte y composición manual.</span>
+                            <span class="lang-en">Exploration of textures, cutting and manual composition.</span>
+                        </p>
+                    </div>
+                    <button class="text-left inline-flex items-center text-[10px] font-bold uppercase tracking-widest text-stone-900 opacity-60 group-hover:opacity-100 transition-all">
+                        <span class="lang-es">Agregar al carrito</span><span class="lang-en">Add to cart</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus w-3 h-3 ml-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Workshop 3 -->
+                <div class="group relative hover:-translate-y-1 hover:shadow-lg hover:shadow-stone-200/50 transition-all duration-500 bg-white border border-stone-100 rounded-[2px] p-8 flex flex-col justify-between h-full">
+                    <div class="absolute top-4 right-4 bg-emerald-50 text-emerald-600 px-2 py-1 rounded-[2px] border border-emerald-100">
+                        <span class="text-[9px] font-bold uppercase tracking-wider block">
+                             <span class="lang-es">5 Cupos</span><span class="lang-en">5 Seats</span>
+                        </span>
+                    </div>
+                    <div>
+                        <div class="group-hover:text-emerald-400 transition-colors text-stone-400 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="pencil" class="lucide lucide-pencil w-8 h-8 stroke-[1]"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"></path><path d="m15 5 4 4"></path></svg>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-stone-400 mb-3 block">Online</span>
+                        <h4 class="text-lg font-medium text-stone-900 mb-3 serif-title tracking-tight">
+                            <span class="lang-es">Ilustración de Libros</span><span class="lang-en">Book Illustration</span>
+                        </h4>
+                        <p class="leading-relaxed text-sm text-stone-600 mb-6 font-light">
+                            <span class="lang-es">Del texto a la imagen. Desarrollo de personajes y narrativa.</span>
+                            <span class="lang-en">From text to image. Character development and narrative.</span>
+                        </p>
+                    </div>
+                    <button class="text-left inline-flex items-center text-[10px] font-bold uppercase tracking-widest text-stone-900 opacity-60 group-hover:opacity-100 transition-all">
+                        <span class="lang-es">Agregar al carrito</span><span class="lang-en">Add to cart</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus w-3 h-3 ml-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Workshop 4 -->
+                <div class="group relative hover:-translate-y-1 hover:shadow-lg hover:shadow-stone-200/50 transition-all duration-500 bg-white border border-stone-100 rounded-[2px] p-8 flex flex-col justify-between h-full">
+                    <div>
+                        <div class="mb-6 text-stone-400 group-hover:text-blue-400 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="palette" class="lucide lucide-palette w-8 h-8 stroke-[1]"><path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"></path><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle></svg>
+                        </div>
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-stone-400 mb-3 block">Workshop</span>
+                        <h4 class="text-lg font-medium text-stone-900 mb-3 serif-title tracking-tight">
+                            <span class="lang-es">Teoría del Color</span><span class="lang-en">Color Theory</span>
+                        </h4>
+                        <p class="leading-relaxed text-sm text-stone-600 mb-6 font-light">
+                            <span class="lang-es">Paletas limitadas y expresión a través del color.</span>
+                            <span class="lang-en">Limited palettes and expression through color.</span>
+                        </p>
+                    </div>
+                    <button class="text-left inline-flex items-center text-[10px] font-bold uppercase tracking-widest text-stone-900 opacity-60 group-hover:opacity-100 transition-all">
+                        <span class="lang-es">Agregar al carrito</span><span class="lang-en">Add to cart</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plus" class="lucide lucide-plus w-3 h-3 ml-2"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Accordion) -->
+    <section class="bg-stone-50 border-t border-stone-200 py-20" id="faq">
+        <div class="max-w-2xl mx-auto px-6">
+             <h3 class="text-xs tracking-[0.2em] font-bold text-stone-400 uppercase mb-12 text-center">
+                <span class="lang-es">Preguntas Frecuentes</span><span class="lang-en">FAQ</span>
+            </h3>
+            
+            <div class="space-y-0 border-t border-stone-200">
+                <!-- Q1 -->
+                <div class="accordion-item group border-b border-stone-200">
+                    <button onclick="toggleAccordion(this)" class="w-full py-5 flex items-center justify-between text-left focus:outline-none">
+                        <h4 class="text-base font-medium text-stone-900">
+                            <span class="lang-es">¿Cómo funcionan las mentorías?</span>
+                            <span class="lang-en">How do mentorships work?</span>
+                        </h4>
+                        <div class="accordion-icon text-stone-400 group-hover:text-stone-900 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-5 h-5"><path d="m6 9 6 6 6-6"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                             <span class="lang-es">La primera llamada es de 30 minutos y es <strong>sin costo</strong> para conocernos y evaluar tus necesidades. Después trabajamos con encuentros semanales o quincenales según tu proyecto.</span>
+                             <span class="lang-en">The first call is 30 minutes long and is <strong>free of charge</strong> to meet and assess your needs. Afterwards, we work with weekly or bi-weekly meetings depending on your project.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="accordion-item group border-b border-stone-200">
+                    <button onclick="toggleAccordion(this)" class="w-full py-5 flex items-center justify-between text-left focus:outline-none">
+                        <h4 class="text-base font-medium text-stone-900">
+                            <span class="lang-es">¿Los talleres online quedan grabados?</span>
+                            <span class="lang-en">Are online workshops recorded?</span>
+                        </h4>
+                        <div class="accordion-icon text-stone-400 group-hover:text-stone-900 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-5 h-5"><path d="m6 9 6 6 6-6"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                             <span class="lang-es">Sí, todos los talleres online se graban y se envían al finalizar la sesión. Tenés acceso a la grabación por <strong>1 año</strong> para verla las veces que quieras y practicar a tu ritmo.</span>
+                             <span class="lang-en">Yes, all online workshops are recorded and sent after the session ends. You have access to the recording for <strong>1 year</strong> to watch it as many times as you like and practice at your own pace.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="accordion-item group border-b border-stone-200">
+                    <button onclick="toggleAccordion(this)" class="w-full py-5 flex items-center justify-between text-left focus:outline-none">
+                        <h4 class="text-base font-medium text-stone-900">
+                            <span class="lang-es">¿Qué medios de pago aceptan?</span>
+                            <span class="lang-en">What payment methods do you accept?</span>
+                        </h4>
+                        <div class="accordion-icon text-stone-400 group-hover:text-stone-900 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-5 h-5"><path d="m6 9 6 6 6-6"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                             <span class="lang-es">Desde Argentina aceptamos Mercado Pago y Transferencia Bancaria. Para alumnos internacionales utilizamos PayPal o Stripe. Los precios se convierten automáticamente al finalizar la compra.</span>
+                             <span class="lang-en">From Argentina we accept Mercado Pago and Bank Transfer. For international students we use PayPal or Stripe. Prices are automatically converted at checkout.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="accordion-item group border-b border-stone-200">
+                    <button onclick="toggleAccordion(this)" class="w-full py-5 flex items-center justify-between text-left focus:outline-none">
+                        <h4 class="text-base font-medium text-stone-900">
+                            <span class="lang-es">Soy principiante, ¿puedo anotarme?</span>
+                            <span class="lang-en">I'm a beginner, can I join?</span>
+                        </h4>
+                        <div class="accordion-icon text-stone-400 group-hover:text-stone-900 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-5 h-5"><path d="m6 9 6 6 6-6"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                             <span class="lang-es">¡Por supuesto! La mayoría de los cursos, especialmente "Collage Digital" y "Teoría del Color", están diseñados para empezar desde cero. No hace falta saber dibujar, solo ganas de experimentar.</span>
+                             <span class="lang-en">Of course! Most courses, especially "Digital Collage" and "Color Theory", are designed to start from scratch. You don't need to know how to draw, just be willing to experiment.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="accordion-item group border-b border-stone-200">
+                    <button onclick="toggleAccordion(this)" class="w-full py-5 flex items-center justify-between text-left focus:outline-none">
+                        <h4 class="text-base font-medium text-stone-900">
+                            <span class="lang-es">¿Entregan certificado?</span>
+                            <span class="lang-en">Do you provide a certificate?</span>
+                        </h4>
+                        <div class="accordion-icon text-stone-400 group-hover:text-stone-900 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-down" class="lucide lucide-chevron-down w-5 h-5"><path d="m6 9 6 6 6-6"></path></svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="pb-6 text-sm text-stone-600 font-light leading-relaxed">
+                             <span class="lang-es">Sí, al finalizar el curso y entregar el proyecto final, te enviamos un certificado digital de participación a tu correo electrónico.</span>
+                             <span class="lang-en">Yes, upon completion of the course and submission of the final project, we will send a digital certificate of participation to your email.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="bg-white border-t border-stone-100 pt-20 pb-20" id="contact">
+        <div class="max-w-xl mx-auto px-6">
+            <h3 class="text-xs tracking-[0.2em] font-bold text-stone-400 uppercase mb-8 text-center">
+                <span class="lang-es">Contacto</span><span class="lang-en">Get in Touch</span>
+            </h3>
+            
+            <p class="text-xl md:text-2xl font-normal text-stone-800 text-center mb-12 serif-title tracking-tight">
+                <span class="lang-es">¿Creamos algo juntos? <br>Me encantaría escuchar tu propuesta.</span>
+                <span class="lang-en">Let's create something together. <br>I'd love to hear your proposal.</span>
+            </p>
+
+            <form class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" class="w-full bg-[#fcfbf9] rounded-[2px] border border-stone-200 px-4 py-3 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-800 focus:ring-0 focus:bg-white transition-all font-normal text-sm" placeholder="Nombre / Name">
+                    <input type="email" class="w-full bg-[#fcfbf9] rounded-[2px] border border-stone-200 px-4 py-3 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-800 focus:ring-0 focus:bg-white transition-all font-normal text-sm" placeholder="Email">
+                </div>
+                <textarea rows="4" class="w-full bg-[#fcfbf9] rounded-[2px] border border-stone-200 px-4 py-3 text-stone-900 placeholder-stone-400 focus:outline-none focus:border-stone-800 focus:ring-0 focus:bg-white transition-all font-normal text-sm resize-none" placeholder="Contame tu idea... / Tell me your idea..."></textarea>
+                
+                <div class="pt-4 text-center">
+                    <button type="submit" class="inline-block w-full px-12 py-4 bg-stone-900 hover:bg-stone-800 text-white rounded-[2px] transition-all duration-300">
+                        <span class="text-[11px] font-bold tracking-[0.15em] uppercase"><span class="lang-es">Enviar Mensaje</span><span class="lang-en">Send Message</span></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-stone-200 bg-[#1a1918] pt-16 pb-16 border-t border-stone-800">
+        <div class="max-w-[1800px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-8">
+                <a href="https://instagram.com" target="_blank" class="hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Instagram</a>
+                <a href="mailto:candelaferdmann@gmail.com.ar" class="hover:text-white transition-colors text-[10px] uppercase font-bold tracking-widest">Email</a>
+            </div>
+            
+            <p class="text-[10px] uppercase font-bold text-stone-400 tracking-widest">© 2026 Candela Ferdmann</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="fixed inset-0 z-50 bg-[#1a1918]/95 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <!-- Close Button -->
+        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2 z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" class="lucide lucide-x w-8 h-8 stroke-1"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+        </button>
+
+        <!-- Navigation Left -->
+        <button onclick="changeImage(-1)" class="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors p-4 hidden md:block z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-left" class="lucide lucide-chevron-left w-10 h-10 stroke-1"><path d="m15 18-6-6 6-6"></path></svg>
+        </button>
+
+        <!-- Image Container -->
+        <div class="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center justify-center">
+            <img id="lightbox-img" src="" alt="Full view" class="max-w-full max-h-[80vh] object-contain shadow-2xl rounded-sm">
+            <p id="lightbox-caption" class="text-stone-400 text-xs tracking-wider mt-4 font-light uppercase"></p>
+        </div>
+
+        <!-- Navigation Right -->
+        <button onclick="changeImage(1)" class="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors p-4 hidden md:block z-50">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="chevron-right" class="lucide lucide-chevron-right w-10 h-10 stroke-1"><path d="m9 18 6-6-6-6"></path></svg>
+        </button>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // Language Toggle
+        function toggleLanguage() {
+            document.body.classList.toggle('english-mode');
+        }
+
+        // Accordion Toggle
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const content = item.querySelector('.accordion-content');
+            
+            // Close others (optional, remove if you want multiple open)
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            item.classList.toggle('active');
+        }
+
+        // Cart Toggle
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            const isOpen = drawer.classList.contains('open');
+            
+            if (isOpen) {
+                drawer.classList.remove('open');
+                overlay.classList.remove('open');
+                document.body.style.overflow = '';
+            } else {
+                drawer.classList.add('open');
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.masonry-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+
+        // Lightbox Logic
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery-img');
+        const captions = document.querySelectorAll('.masonry-item p');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxImage();
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = ''; 
+        }
+
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateLightboxImage();
+        }
+
+        function updateLightboxImage() {
+            lightboxImg.src = images[currentIndex].src.replace('&w=800', '&w=1600'); 
+            const currentCaptionEl = captions[currentIndex];
+            if(currentCaptionEl) {
+                const isEnglish = document.body.classList.contains('english-mode');
+                const text = isEnglish ? 
+                    currentCaptionEl.querySelector('.lang-en')?.innerText : 
+                    currentCaptionEl.querySelector('.lang-es')?.innerText;
+                lightboxCaption.innerText = text || "";
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('hidden')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    </script>
+
+</body></html>
