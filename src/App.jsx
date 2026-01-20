@@ -77,7 +77,6 @@ function App() {
 
         // If no products in Firebase, seed with defaults
         if (snapshot.empty) {
-          console.log('Initializing Firebase with default products...');
           for (const product of DEFAULT_PRODUCTS) {
             await setDoc(doc(db, COLLECTIONS.PRODUCTS, product.id), product);
           }
@@ -100,12 +99,9 @@ function App() {
         const settingsDoc = await getDoc(doc(db, COLLECTIONS.SETTINGS, 'app'));
         if (settingsDoc.exists()) {
           const settings = settingsDoc.data();
-          console.log('📥 Loaded settings from Firebase:', settings);
           if (settings.sortOrder) {
             setSortOrder(settings.sortOrder);
           }
-        } else {
-          console.log('📄 No settings document found, using defaults');
         }
         settingsLoadedRef.current = true;
       } catch (error) {
@@ -121,14 +117,12 @@ function App() {
   useEffect(() => {
     const saveSettings = async () => {
       try {
-        console.log('💾 Saving sortOrder to Firebase:', sortOrder);
         await setDoc(doc(db, COLLECTIONS.SETTINGS, 'app'), {
           sortOrder: sortOrder,
           updatedAt: new Date().toISOString()
         });
-        console.log('✅ Settings saved successfully');
       } catch (error) {
-        console.error('❌ Error saving settings:', error);
+        console.error('Error saving settings:', error);
       }
     };
 

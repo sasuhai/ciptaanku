@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Plus, Trash2, Edit3, Save } from 'lucide-react';
+import { X, Plus, Trash2, Edit3, Save, Camera, RefreshCw } from 'lucide-react';
 
 const ProductManager = ({ products, onUpdate, onClose, sortOrder, onSortChange }) => {
     const [editingId, setEditingId] = useState(null);
+    const [refreshingId, setRefreshingId] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
         purpose: '',
@@ -43,6 +44,47 @@ const ProductManager = ({ products, onUpdate, onClose, sortOrder, onSortChange }
     const handleDelete = (id) => {
         if (confirm('Delete this product?')) {
             onUpdate(products.filter(p => p.id !== id));
+        }
+    };
+
+    const handleRefreshScreenshot = async (product) => {
+        setRefreshingId(product.id);
+        try {
+            // Use a direct screenshot URL that works without JSON parsing
+            // This creates a cache-busted URL that will force a fresh screenshot
+            const timestamp = Date.now();
+            const screenshotUrl = `https://api.microlink.io/?url=${encodeURIComponent(product.url)}&screenshot=true&meta=false&embed=screenshot.url&force=true&t=${timestamp}`;
+
+            // Test if the URL is valid by trying to load it
+            const testImg = new Image();
+            testImg.crossOrigin = "anonymous";
+
+            await new Promise((resolve, reject) => {
+                testImg.onload = () => resolve(true);
+                testImg.onerror = () => reject(new Error('Failed to load screenshot'));
+                testImg.src = screenshotUrl;
+            });
+
+            // If we get here, the image loaded successfully
+            // Update product with new screenshot URL
+            const updatedProducts = products.map(p =>
+                p.id === product.id
+                    ? {
+                        ...p,
+                        screenshotUrl: screenshotUrl,
+                        lastScreenshotUpdate: new Date().toISOString()
+                    }
+                    : p
+            );
+            onUpdate(updatedProducts);
+
+            // Log success (thumbnail update is visual feedback)
+            console.log(`✅ Screenshot refreshed for ${product.name}`);
+        } catch (error) {
+            console.error('Error refreshing screenshot:', error);
+            alert('❌ Error refreshing screenshot. The API might be temporarily unavailable.');
+        } finally {
+            setRefreshingId(null);
         }
     };
 
@@ -175,13 +217,69 @@ const ProductManager = ({ products, onUpdate, onClose, sortOrder, onSortChange }
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
+                                gap: '12px',
                                 border: editingId === p.id ? `1px solid ${p.accent}` : '1px solid transparent'
                             }}>
-                                <div>
-                                    <p style={{ fontWeight: 600 }}>{p.name}</p>
-                                    <p style={{ fontSize: '0.7rem', color: 'var(--text-secondary)' }}>{p.url}</p>
+                                {/* Screenshot Thumbnail */}
+                                <div style={{
+                                    width: '80px',
+                                    height: '45px',
+                                    borderRadius: '6px',
+                                    overflow: 'hidden',
+                                    background: `linear-gradient(135deg, ${p.accent}22, ${p.accent}44)`,
+                                    border: '1px solid rgba(255,255,255,0.1)',
+                                    flexShrink: 0,
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}>
+                                    {refreshingId === p.id ? (
+                                        <div style={{
+                                            fontSize: '0.6rem',
+                                            color: '#fff',
+                                            opacity: 0.6,
+                                            fontWeight: 600
+                                        }}>
+                                            LOADING...
+                                        </div>
+                                    ) : (
+                                        <img
+                                            src={p.thumbnail || p.screenshotUrl || `https://api.microlink.io/?url=${encodeURIComponent(p.url)}&screenshot=true&meta=false&embed=screenshot.url`}
+                                            alt={p.name}
+                                            style={{
+                                                width: '100%',
+                                                height: '100%',
+                                                objectFit: 'cover'
+                                            }}
+                                            onError={(e) => {
+                                                e.target.style.display = 'none';
+                                                e.target.parentElement.innerHTML = `<div style="font-size: 0.5rem; color: #fff; opacity: 0.4; text-align: center;">${p.category}</div>`;
+                                            }}
+                                        />
+                                    )}
                                 </div>
-                                <div style={{ display: 'flex', gap: '8px' }}>
+
+                                {/* Product Info */}
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                    <p style={{ fontWeight: 600, marginBottom: '4px' }}>{p.name}</p>
+                                    <p style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.url}</p>
+                                </div>
+
+                                {/* Action Buttons */}
+                                <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                                    <button
+                                        onClick={() => handleRefreshScreenshot(p)}
+                                        className="icon-btn"
+                                        disabled={refreshingId === p.id}
+                                        style={{
+                                            color: refreshingId === p.id ? '#34c759' : '#007aff',
+                                            opacity: refreshingId === p.id ? 0.6 : 1
+                                        }}
+                                        title="Refresh Screenshot"
+                                    >
+                                        <RefreshCw size={16} className={refreshingId === p.id ? 'spinning' : ''} />
+                                    </button>
                                     <button onClick={() => startEdit(p)} className="icon-btn"><Edit3 size={16} /></button>
                                     <button onClick={() => handleDelete(p.id)} className="icon-btn" style={{ color: '#ff3b30' }}><Trash2 size={16} /></button>
                                 </div>
@@ -204,6 +302,15 @@ const ProductManager = ({ products, onUpdate, onClose, sortOrder, onSortChange }
         .btn-secondary { background: none; border: 1px solid var(--border-color); color: white; padding: 10px; border-radius: 8px; margin-top: 5px; cursor: pointer; }
         .icon-btn { background: none; border: none; color: white; cursor: pointer; opacity: 0.6; transition: 0.2s; }
         .icon-btn:hover { opacity: 1; }
+        .icon-btn:disabled { cursor: not-allowed; }
+        
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .spinning {
+          animation: spin 1s linear infinite;
+        }
       `}</style>
         </motion.div>
     );

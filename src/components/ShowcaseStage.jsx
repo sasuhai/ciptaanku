@@ -210,6 +210,7 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                                 src={activeProduct.url}
                                 title={activeProduct.name}
                                 style={{ width: '1440px', height: '900px', border: 'none', background: '#fff' }}
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -241,6 +242,7 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                                 src={activeProduct.url}
                                 title={`${activeProduct.name} Mobile`}
                                 style={{ width: '402px', height: '874px', border: 'none', background: '#fff' }}
+                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -311,26 +313,56 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                                 height: '115px',
                                 width: '100%',
                                 background: '#000',
-                                overflow: 'hidden'
+                                overflow: 'hidden',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center'
                             }}>
-                                <div style={{
-                                    width: '1280px',
-                                    height: '720px',
-                                    transform: 'scale(0.159375)',
-                                    transformOrigin: 'top left',
-                                    pointerEvents: 'none'
-                                }}>
-                                    <iframe
-                                        src={p.url}
-                                        title={p.name}
+                                {/* Show screenshot thumbnail instead of gradient */}
+                                {activeProduct.id === p.id ? (
+                                    // Active product: show live iframe
+                                    <div style={{
+                                        width: '1280px',
+                                        height: '720px',
+                                        transform: 'scale(0.159375)',
+                                        transformOrigin: 'top left',
+                                    }}>
+                                        <iframe
+                                            src={p.url}
+                                            title={p.name}
+                                            style={{
+                                                width: '1280px',
+                                                height: '720px',
+                                                border: 'none',
+                                                background: '#fff'
+                                            }}
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                ) : (
+                                    // Inactive products: show screenshot (local first, then API)
+                                    <img
+                                        src={p.thumbnail || `https://api.microlink.io/?url=${encodeURIComponent(p.url)}&screenshot=true&meta=false&embed=screenshot.url`}
+                                        alt={p.name}
                                         style={{
-                                            width: '1280px',
-                                            height: '720px',
-                                            border: 'none',
-                                            background: '#fff'
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            opacity: 0.9
+                                        }}
+                                        onError={(e) => {
+                                            // If local thumbnail fails, try API
+                                            if (!e.target.src.includes('microlink')) {
+                                                e.target.src = `https://api.microlink.io/?url=${encodeURIComponent(p.url)}&screenshot=true&meta=false&embed=screenshot.url`;
+                                            } else {
+                                                // Fallback to gradient if both fail
+                                                e.target.style.display = 'none';
+                                                e.target.parentElement.style.background = `linear-gradient(135deg, ${p.accent}22, ${p.accent}44)`;
+                                                e.target.parentElement.innerHTML += `<div style="color: #fff; font-size: 0.7rem; font-weight: 600; letterSpacing: '0.1em';">${p.category.toUpperCase()}</div>`;
+                                            }
                                         }}
                                     />
-                                </div>
+                                )}
                             </div>
 
                             <div style={{
@@ -425,6 +457,10 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                     filter: grayscale(0%);
                     transform: scale(1.05);
                 }
+
+                .masonry-item:hover .masonry-overlay {
+                    opacity: 1 !important;
+                }
             `}</style>
 
             {/* MASONRY GALLERY SECTION */}
@@ -463,23 +499,72 @@ const ShowcaseStage = ({ products, activeProduct, onSelectProduct, sortOrder, on
                                     className="masonry-item-inner"
                                     style={{
                                         aspectRatio: aspectRatio,
-                                        position: 'relative'
+                                        position: 'relative',
+                                        background: `linear-gradient(135deg, ${product.accent}22, ${product.accent}44)`,
+                                        overflow: 'hidden'
                                     }}
                                 >
-                                    <iframe
-                                        src={product.url}
-                                        title={product.name}
+                                    <img
+                                        src={product.thumbnail || `https://api.microlink.io/?url=${encodeURIComponent(product.url)}&screenshot=true&meta=false&embed=screenshot.url`}
+                                        alt={product.name}
+                                        loading="lazy"
                                         style={{
                                             position: 'absolute',
                                             top: 0,
                                             left: 0,
                                             width: '100%',
                                             height: '100%',
-                                            border: 'none',
-                                            background: '#fff',
-                                            pointerEvents: 'none'
+                                            objectFit: 'cover',
+                                            transition: 'transform 0.7s ease-out, filter 0.7s ease-out',
+                                            filter: 'grayscale(10%)'
+                                        }}
+                                        onError={(e) => {
+                                            // If local thumbnail fails, try API
+                                            if (!e.target.src.includes('microlink')) {
+                                                e.target.src = `https://api.microlink.io/?url=${encodeURIComponent(product.url)}&screenshot=true&meta=false&embed=screenshot.url`;
+                                            } else {
+                                                // Fallback: hide image and show gradient background
+                                                e.target.style.display = 'none';
+                                            }
                                         }}
                                     />
+                                    {/* Overlay with product info on hover */}
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        background: `linear-gradient(135deg, ${product.accent}00, ${product.accent}cc)`,
+                                        opacity: 0,
+                                        transition: 'opacity 0.3s ease',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        padding: '20px'
+                                    }}
+                                        className="masonry-overlay"
+                                    >
+                                        <div style={{
+                                            fontSize: '1.2rem',
+                                            fontWeight: 800,
+                                            color: '#ffffff',
+                                            letterSpacing: '0.05em',
+                                            textAlign: 'center',
+                                            marginBottom: '8px'
+                                        }}>
+                                            {product.name}
+                                        </div>
+                                        <div style={{
+                                            fontSize: '0.7rem',
+                                            color: '#ffffff',
+                                            letterSpacing: '0.1em',
+                                            fontWeight: 600
+                                        }}>
+                                            CLICK TO VIEW LIVE
+                                        </div>
+                                    </div>
                                 </div>
                                 <div style={{
                                     marginTop: '8px',
